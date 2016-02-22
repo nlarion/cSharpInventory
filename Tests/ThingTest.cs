@@ -1,5 +1,5 @@
 using Xunit;
-using ToDoList.Objects;
+using Inventory.Objects;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,9 +7,9 @@ using System.Data.SqlClient;
 
 namespace Inventory
 {
-  public class ToDoTest : IDisposable
+  public class InventoryTest : IDisposable
   {
-    public ToDoTest()
+    public InventoryTest()
     {
       //DBConfiguration.ConnectionString = "Data Source=CHIYOKAWA\\SQLEXPRESS;Initial Catalog=inventory_test;Integrated Security=SSPI;";
       DBConfiguration.ConnectionString = "Data Source=(localdb)\\mssqllocaldb;Initial Catalog=inventory_test;Integrated Security=SSPI;";
@@ -18,7 +18,7 @@ namespace Inventory
     public void Test_DatabaseEmptyAtFirst()
     {
       //Arrange, Act
-      int result = Task.GetAll().Count;
+      int result = Thing.GetAll().Count;
 
       //Assert
       Assert.Equal(0, result);
@@ -27,45 +27,45 @@ namespace Inventory
     public void Test_Equal_ReturnsTrueIfDescriptionsAreTheSame()
     {
       //Arrange, Act
-      Task firstTask = new Task("Mow the lawn");
-      Task secondTask = new Task("Mow the lawn");
+      Thing firstThing = new Thing("Kobe Rookie Card");
+      Thing secondThing = new Thing("Kobe Rookie Card");
 
       //Assert
-      Assert.Equal(firstTask, secondTask);
+      Assert.Equal(firstThing, secondThing);
     }
     [Fact]
     public void Test_Save_AssignsIdToObject()
     {
       //Arrange
-      Task testTask = new Task("Mow the lawn");
+      Thing testThing = new Thing("Kobe Rookie Card");
 
       //Act
-      testTask.Save();
-      Task savedTask = Task.GetAll()[0];
+      testThing.Save();
+      Thing savedThing = Thing.GetAll()[0];
 
-      int result = savedTask.GetId();
-      int testId = testTask.GetId();
+      int result = savedThing.GetId();
+      int testId = testThing.GetId();
 
       //Assert
       Assert.Equal(testId, result);
     }
 
     [Fact]
-    public void Test_Find_FindsTaskInDatabase()
+    public void Test_Find_FindsThingInDatabase()
     {
       //Arrange
-      Task testTask = new Task("Mow the lawn");
-      testTask.Save();
+      Thing testThing = new Thing("Kobe Rookie Card");
+      testThing.Save();
 
       //Act
-      Task foundTask = Task.Find(testTask.GetId());
+      Thing foundThing = Thing.Find(testThing.GetId());
 
       //Assert
-      Assert.Equal(testTask, foundTask);
+      Assert.Equal(testThing, foundThing);
     }
     public void Dispose()
     {
-      Task.DeleteAll();
+      Thing.DeleteAll();
     }
   }
 }

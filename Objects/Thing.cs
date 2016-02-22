@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using ToDoList.Objects;
+using Inventory.Objects;
 using System.Data.SqlClient;
 
 namespace Inventory

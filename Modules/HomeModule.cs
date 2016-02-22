@@ -1,6 +1,6 @@
 using Nancy;
 using System.Collections.Generic;
-using ToDoList.Objects;
+using Inventory.Objects;
 
 namespace Inventory
 {
