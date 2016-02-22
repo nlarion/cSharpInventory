@@ -9,7 +9,18 @@ namespace Inventory
     public HomeModule()
     {
       Get["/"] = _ => {
-          return View["index.cshtml"];
+        return View["index.cshtml"];
+      };
+
+      Post["/"] = _ => {
+        Thing newThing = new Thing(Request.Form["thing"]);
+        newThing.Save();
+        Thing savedThing = Thing.GetAll()[0];
+        return View["index.cshtml",savedThing];
+      };
+      Post["/delete"]= _ => {
+        Thing.DeleteAll();
+        return View["delete_page.cshtml"];
       };
       // Get["/categories"] = _ => {
       //   var allCategories = Category.GetAll();

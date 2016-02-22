@@ -2,11 +2,18 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Add New Task</title>
+    <title>Add New Thing</title>
   </head>
   <body>
-    <h1>To Do List</h1>
-    <h3><a href='/categories/new'>Add a new category</a></h3>
-    <h3><a href='/categories'>View categories</a></h3>
+    <h1>Add a thing to your inventory!</h1>
+    <form action="/" method="post">
+      <input type="text" name="thing" placeholder="Enter the thing name here" size="50"></input>
+      <button type="submit" name="button">Submit</button>
+    </form>
+    <form  action="/delete" method="post">
+      <button type="submit" name="button">Delete database entries</button>
+    </form>
+    <h3><a href='/viewAll'>View all things</a></h3>
+    <h3><a href='/find'>Find a thing</a></h3>
   </body>
 </html>
