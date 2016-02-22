@@ -17,7 +17,7 @@ namespace Inventory
         Thing newThing = new Thing(Request.Form["thing"]);
         newThing.Save();
         List<Thing> savedThings = Thing.GetAll();
-        return View["index.cshtml",savedThings];
+        return View["index.cshtml",Request.Form["thing"]];
       };
       Post["/delete"]= _ => {
         Thing.DeleteAll();

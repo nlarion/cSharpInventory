@@ -13,6 +13,14 @@
     <form  action="/delete" method="post">
       <button type="submit" name="button">Delete database entries</button>
     </form>
+    @{
+      if(@Model != null)
+      {
+        <p>
+          @Model
+        </p>
+      }
+    }
     <h3><a href='/viewAll'>View all things</a></h3>
     <h3><a href='/find'>Find a thing</a></h3>
   </body>
