@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Add New Thing</title>
+  </head>
+  <body>
+    <h1>Your Things</h1>
+    @{
+      if(@Model != null)
+      {
+        foreach(var item in Model)
+        {
+          <p>
+            @item.GetDescription()
+          </p>
+        }
+      }
+
+    }
+  <a href="/">Go home</a>
+  </body>
+</html>
