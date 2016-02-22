@@ -7,9 +7,17 @@
   <body>
     <h1>Search your inventory</h1>
     <form action="/search" method="post">
-      <input type="text" name="thing" placeholder="What item are you searchin' for?" size="50"></input>
+      <input type="text" name="look" placeholder="What item are you searchin' for?" size="50"></input>
       <button type="submit" name="button">Submit</button>
     </form>
+    @{
+      if(@Model != null)
+      {
+        <p>
+          @Model.GetDescription()
+        </p>
+      }
+    }
     <h3><a href='/'>Go home</a></h3>
     <h3><a href='/find'>Find a thing</a></h3>
   </body>

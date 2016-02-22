@@ -30,10 +30,10 @@ namespace Inventory
       Get["/find"]= _ => {
         return View["searchPage.cshtml"];
       };
-      // Post["/search/{nameOfThing}"]= parameters => {
-      //   List<Thing>
-      //   return view["searchPage.cshtml", //what user is searching for]
-      // };
+      Post["/search"]= _ => {
+        Thing searchResult = Thing.Find(Request.Form["look"]);
+        return View["searchPage.cshtml", searchResult];
+      };
       // Get["/categories"] = _ => {
       //   var allCategories = Category.GetAll();
       //   return View["categories.cshtml", allCategories];
