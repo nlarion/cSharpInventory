@@ -49,16 +49,17 @@ namespace Inventory
       SqlCommand cmd = new SqlCommand("DELETE FROM things;", conn);
       cmd.ExecuteNonQuery();
     }
-    public static Thing Find(int id)
+    public static Thing Find(string nameOfThing)
     {
       SqlConnection conn = DB.Connection();
       SqlDataReader rdr = null;
       conn.Open();
 
-      SqlCommand cmd = new SqlCommand("SELECT * FROM things WHERE id = @ThingId;", conn);
+      SqlCommand cmd = new SqlCommand("SELECT * FROM things WHERE description like @ThingId;", conn);
       SqlParameter thingIdParameter = new SqlParameter();
       thingIdParameter.ParameterName = "@ThingId";
-      thingIdParameter.Value = id.ToString();
+      // thingIdParameter.Value = id.ToString();
+      thingIdParameter.Value = "%" + nameOfThing +"%";
       cmd.Parameters.Add(thingIdParameter);
       rdr = cmd.ExecuteReader();
 

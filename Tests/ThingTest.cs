@@ -56,13 +56,16 @@ namespace Inventory
       //Arrange
       Thing testThing = new Thing("Kobe Rookie Card");
       testThing.Save();
+      Console.WriteLine(testThing.GetDescription());
 
       //Act
-      Thing foundThing = Thing.Find(testThing.GetId());
+      Thing foundThing = Thing.Find("Kobe");
+      Console.WriteLine(foundThing.GetDescription());
 
       //Assert
       Assert.Equal(testThing, foundThing);
     }
+  
     public void Dispose()
     {
       Thing.DeleteAll();

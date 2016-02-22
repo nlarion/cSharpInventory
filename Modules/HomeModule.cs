@@ -27,6 +27,13 @@ namespace Inventory
         List<Thing> savedThings = Thing.GetAll();
         return View["viewAll.cshtml", savedThings];
       };
+      Get["/find"]= _ => {
+        return View["searchPage.cshtml"];
+      };
+      // Post["/search/{nameOfThing}"]= parameters => {
+      //   List<Thing>
+      //   return view["searchPage.cshtml", //what user is searching for]
+      // };
       // Get["/categories"] = _ => {
       //   var allCategories = Category.GetAll();
       //   return View["categories.cshtml", allCategories];
